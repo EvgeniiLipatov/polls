@@ -32,9 +32,13 @@
     <hr/>
 
      <h5>Choices:</h5>
+
+    <p class="text-center">
+        <a href="{% url 'add_answer' poll.pk %}">Answer</a>
+    </p>
     {% for choice in choices %}
     <div class="radio">
-         <label><input type="radio" name="optradio" checked>{{ choice.varText}}</label>
+         <label>{{ choice.varText}}</label>
          <a href="{% url 'update_choice' choice.pk %}">Edit</a>
          <a href="{% url 'delete_choice' choice.pk %}">Delete</a>
     </div>

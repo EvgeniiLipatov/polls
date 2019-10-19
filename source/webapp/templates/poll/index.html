@@ -20,6 +20,7 @@
             <a href="{% url 'poll_view' poll.pk %}">View...</a>
             <a href="{% url 'update_poll' poll.pk %}">Edit</a>
             <a href="{% url 'delete_poll' poll.pk %}">Delete</a>
+            <a href="{% url 'add_answer' poll.pk %}">Answer</a>
         </p>
         <hr/>
     {% endfor %}

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ Poll }}{% endblock %}
+
+{% block menu %}
+
+    <li><a href="#">Edit</a></li>
+    <li><a href="#">Create poll</a></li>
+
+{% endblock %}
+
+{% block content %}
+
+    <table style="width: 100%">
+        <tr>
+            <th>
+                Question
+            </th>
+            <th>
+                 Poll creation date
+            </th>
+        </tr>
+        <tr>
+            <td>
+                {{ poll.question }}
+            </td>
+            <td>
+                 {{ poll.created_at }}
+            </td>
+        </tr>
+    </table>
+     <h3>Choices:</h3>
+   <!-- {% for task in tasks %}
+        <div>
+              <a href="{% url 'update_task' task.pk %}"><p>{{ task.brief}} created at {{ task.created_at|date:'d.m.Y H:i:s' }}</p> </a>
+    {% empty %}
+        <p>No choices yet.</p>
+    {% endfor %} -->
+{% endblock %}

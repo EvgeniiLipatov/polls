@@ -20,3 +20,6 @@ class Answer(models.Model):
     poll = models.ForeignKey('Poll', related_name='answers', on_delete=models.CASCADE)
     varText = models.ForeignKey('Choice', related_name='answers', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Creation Time')
+
+    def __str__(self):
+        return self.varText

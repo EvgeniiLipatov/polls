@@ -6,6 +6,10 @@
 
 {% block content %}
     <h1>Polls:</h1>
+    {% if is_paginated %}
+        {% include 'partial/pagination.html' %}
+    {% endif %}
+
     <hr/>
 
     {% for poll in polls %}

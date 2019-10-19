@@ -14,3 +14,9 @@ class ChoiceForm(forms.ModelForm):
         model = Choice
         fields = ['varText']
 
+class PollChoiceForm(forms.ModelForm):
+    class Meta:
+        model = Choice
+        fields = ['varText']
+
+

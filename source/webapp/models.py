@@ -8,4 +8,4 @@ class Poll(models.Model):
 
 class Choice(models.Model):
     varText = models.TextField(max_length=1000, null=False, blank=False, verbose_name='answer')
-    poll = models.ForeignKey('webapp.Poll', related_name='polls', on_delete=models.CASCADE)
+    poll = models.ForeignKey('Poll', related_name='polls', on_delete=models.CASCADE)

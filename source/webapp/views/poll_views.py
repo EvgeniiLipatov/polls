@@ -1,7 +1,7 @@
 from django.urls import reverse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
-from webapp.forms import PollForm
+from webapp.forms import PollForm, ChoiceForm
 from webapp.models import Poll
 
 
@@ -10,11 +10,20 @@ class PollsView(ListView):
     model = Poll
     context_object_name = 'polls'
     ordering = ["-created_at"]
+    paginate_by = 3
+    paginate_orphans = 1
 
 
 class PollView(DetailView):
     template_name = 'poll/poll.html'
     model = Poll
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        poll = self.object
+        context['form'] = ChoiceForm()
+        context['choices'] = poll.polls.all()
+        return context
 
 
 class PollCreateView(CreateView):

@@ -4,8 +4,8 @@
 
 {% block menu %}
 
-    <li><a href="#">Edit</a></li>
-    <li><a href="#">Create poll</a></li>
+    <li><a href="{% url 'update_poll' poll.pk %}">Edit</a></li>
+    <li><a href="{% url 'create_poll' %}">Create poll</a></li>
 
 {% endblock %}
 
@@ -29,11 +29,20 @@
             </td>
         </tr>
     </table>
-     <h3>Choices:</h3>
-   <!-- {% for task in tasks %}
-        <div>
-              <a href="{% url 'update_task' task.pk %}"><p>{{ task.brief}} created at {{ task.created_at|date:'d.m.Y H:i:s' }}</p> </a>
+    <hr/>
+
+     <h5>Choices:</h5>
+    {% for choice in choices %}
+    <div class="radio">
+         <label><input type="radio" name="optradio" checked>{{ choice.varText}}</label>
+         <a href="{% url 'update_choice' choice.pk %}">Edit</a>
+         <a href="{% url 'delete_choice' choice.pk %}">Delete</a>
+    </div>
+
     {% empty %}
         <p>No choices yet.</p>
-    {% endfor %} -->
+    {% endfor %}
+     <form action="{% url 'poll_choice_create' poll.pk%}" method="POST" id="add_choice">
+            {% include 'partial/form.html' with button_text='Add' %}
+</form>
 {% endblock %}

@@ -24,4 +24,8 @@ class AnswerForm(forms.ModelForm):
         model = Answer
         fields = ['varText']
         labels={'varText': 'Ответ'}
+        widgets = {
+            'varText': forms.RadioSelect,
+
+        }
 
